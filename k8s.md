@@ -2,3 +2,5 @@
 Переходим в корень проекта и запускаем ansible-плейбук `cluster.yaml`. `ip` - внутренний ip-адресс, `access_ip` = `ansible_host` - внешний ip-адрес.
 
 Источник: https://habr.com/ru/companies/domclick/articles/682364/
+
+Снимки виртуальных помогут ускорить тренировку по работе с Kubernetes!кластером
