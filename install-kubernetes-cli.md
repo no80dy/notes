@@ -16,8 +16,8 @@ yc resource-manager folder add-access-binding \
 yc vpc security-group create \
 --name security-group-default \
 --network-id enpc20bohg3g6p7ekkg8 \
---rule "direction=ingress,protocol=any,v4-cidrs=[0.0.0.0/0]"
---rule "direction=egress,protocol=any,v4-cidrs=[0.0.0.0/0]"
+--rule "direction=ingress,from-port=0,to-port=65535,protocol=any,v4-cidrs=[0.0.0.0/0]"
+--rule "direction=egress,from-port=0,to-port=65535,protocol=any,v4-cidrs=[0.0.0.0/0]"
 
 yc managed-kubernetes cluster create \
 --name k8s-cluster \
