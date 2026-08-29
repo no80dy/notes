@@ -21,9 +21,9 @@ yc vpc security-group create \
 
 yc managed-kubernetes cluster create \
 --name k8s-cluster \
---network-id enpc20bohg3g6p7ekkg8 \
---service-account-id ajedru7h1l6p8nelmv0r \
---node-service-account-id ajeq3pmsm61ob4qrjtaj \
+--network-id $(yc vpc network get network-default --format json | jq .id -r) \
+--service-account-id $(yc iam service-account get --name k8s-res-sa-$(yc config get folder-id) --format json | jq .id -r) \
+--node-service-account-id $(yc iam service-account get --name k8s-node-sa-$(yc config get folder-id) --format json | jq .id -r) \
 --cluster-ipv4-range 10.96.0.0/16 \
 --service-ipv4-range 10.112.0.0/16 \
 --public-ip \
