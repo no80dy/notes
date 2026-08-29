@@ -1,6 +1,6 @@
 ```bash
 yc vpc network create network-default
-yc vpc subnet create --name subnet-default --description "Network default 1" --network-id enpc20bohg3g6p7ekkg8 --zone ru-central1-a --range 192.168.1.0/24
+yc vpc subnet create --name subnet-default --network-id $(yc vpc network get network-default --format json | jq .id -r) --zone ru-central1-a --range 192.168.1.0/24
 
 yc iam service-account create --name k8s-res-sa-$(yc config get folder-id)
 yc resource-manager folder add-access-binding \
