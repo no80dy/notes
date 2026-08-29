@@ -31,13 +31,13 @@ yc managed-kubernetes cluster create \
 --zone ru-central1-a
 
 yc managed-kubernetes node-group create \
---name k8s-demo-ng \
---cluster-name k8s-demo \
+--name k8s-default \
+--cluster-name k8s-cluster \
 --platform standard-v3 \
 --cores 2 \
 --memory 4 \
 --core-fraction 50 \
 --disk-type network-ssd \
 --fixed-size 2 \
---network-interface subnets=yc-auto-subnet-0,ipv4-address=nat,security-group-ids=[$(yc vpc security-group get security-group-default --format json | jq .id -r)]
+--network-interface subnets=subnet-default,ipv4-address=nat,security-group-ids=[$(yc vpc security-group get security-group-default --format json | jq .id -r)]
 ```
